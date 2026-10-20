@@ -7,7 +7,7 @@ CC?=cc
 SDL2_CONFIG?=sdl2-config
 CLANG_NONPROTOTYPE_FLAG:=$(shell $(CC) -Wdeprecated-non-prototype -E -x c /dev/null >/dev/null 2>&1 && echo -Wno-error=deprecated-non-prototype)
 CFLAGS?=-O2 -Werror $(CLANG_NONPROTOTYPE_FLAG)
-RG35XXH_CFLAGS?=-O3 -mcpu=cortex-a53 -mtune=cortex-a53 -Werror
+RG35XXH_CFLAGS?=-O3 -mcpu=cortex-a53 -mtune=cortex-a53 -Werror -Wno-error=format-truncation
 CPPFLAGS+=-I . $(shell $(SDL2_CONFIG) --cflags) -DSYSTEM_VOLUME_MIXER_AVAILABLE=0
 
 ifeq (${OS},Windows_NT)
